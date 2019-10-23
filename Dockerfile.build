@@ -1,0 +1,16 @@
+FROM debian:buster
+LABEL maintainer="Sebastien Delafond <sdelafond@gmail.com>"
+
+RUN apt-get update
+RUN apt-get install --yes build-essential
+RUN apt-get install --yes g++
+RUN apt-get install --yes libstdc++-8-dev
+RUN apt-get install --yes default-libmysqlclient-dev
+
+ENV SRC=/opt/untangle/dnsproxy
+RUN mkdir -p ${SRC}
+VOLUME ${SRC}
+
+WORKDIR ${SRC}
+
+CMD make

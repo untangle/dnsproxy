@@ -1,0 +1,13 @@
+version: '2'
+services:
+    build:
+      image: untangleinc/dnsproxy:build
+      volumes:
+        - ./:/opt/untangle/dnsproxy
+
+    build-local:
+      build:
+        context: .
+        dockerfile: Dockerfile.build
+      volumes:
+        - ./:/opt/untangle/dnsproxy
